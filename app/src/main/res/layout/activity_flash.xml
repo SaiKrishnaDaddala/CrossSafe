@@ -28,7 +28,7 @@
         android:visibility="visible">
 
         <TextView
-            android:text="Tap anywhere to stop"
+            android:text="Slide down to stop"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:layout_weight="1"
@@ -101,6 +101,59 @@
             android:progressTint="#FFFFFF"
             android:thumbTint="#FFFFFF"
             android:rotation="270" />
+    </LinearLayout>
+
+    <!-- Stop confirmation overlay — slides up from bottom on single tap -->
+    <LinearLayout
+        android:id="@+id/stopOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#E6000000"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="40dp"
+        android:translationY="800dp"
+        android:elevation="8dp"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:background="#55FFFFFF" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stop flashing?"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnStopConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="STOP FLASHING"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="#CC2222"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnStopCancel"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Keep Going"
+            android:textColor="#CCFFFFFF"
+            android:background="@android:color/transparent" />
+
     </LinearLayout>
 
 </FrameLayout>

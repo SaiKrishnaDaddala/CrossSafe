@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark mode overrides -->
+    <color name="colorBackground">#0D0D0D</color>
+    <color name="colorSurface">#1A1A1A</color>
+    <color name="colorSurfaceVariant">#242424</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorTextSecondary">#9CA3AF</color>
+    <color name="colorPrimary">#EF4444</color>
+    <color name="colorPrimaryDark">#B91C1C</color>
+    <color name="colorChipBackground">#1E1E1E</color>
+    <color name="colorChipBorder">#333333</color>
+    <color name="colorControlRow">#1A1A1A</color>
+    <color name="colorControlBorder">#2A2A2A</color>
+    <color name="iconColor">#9CA3AF</color>
+    <color name="iconColorAccent">#EF4444</color>
+</resources>

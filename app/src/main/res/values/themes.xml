@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.CrossSafe" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Base theme shared by both modes -->
+    <style name="Theme.CrossSafe.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
-        <item name="colorOnPrimary">@color/colorText</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:textColorPrimary">@color/colorText</item>
         <item name="android:textColorSecondary">@color/colorTextSecondary</item>
     </style>
 
-    <style name="Theme.CrossSafe.Dark" parent="Theme.CrossSafe" />
+    <!-- Main app theme (DayNight) -->
+    <style name="Theme.CrossSafe" parent="Theme.CrossSafe.Base" />
 
+    <!-- Legacy alias so manifest activity references still work -->
+    <style name="Theme.CrossSafe.Dark" parent="Theme.CrossSafe.Base" />
+
+    <!-- Flash activity — always dark -->
     <style name="Theme.CrossSafe.Flash" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:windowBackground">#000000</item>
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:navigationBarColor">#000000</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
     </style>
 
+    <!-- Splash screen -->
     <style name="Theme.CrossSafe.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/colorBackground</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
         <item name="windowSplashScreenIconBackgroundColor">@color/colorPrimary</item>
-        <item name="postSplashScreenTheme">@style/Theme.CrossSafe.Dark</item>
+        <item name="postSplashScreenTheme">@style/Theme.CrossSafe</item>
     </style>
 
 </resources>

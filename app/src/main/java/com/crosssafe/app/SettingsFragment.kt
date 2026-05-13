@@ -2,8 +2,10 @@ package com.crosssafe.app
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.crosssafe.app.util.ThemeManager
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -11,6 +13,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         preferenceManager.sharedPreferencesName = "crosssafe_prefs"
         setPreferencesFromResource(R.xml.preferences, rootKey)
         setupPresets()
+        setupAppearance()
         setupHelp()
     }
 
@@ -21,6 +24,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
         }
         findPreference<Preference>("create_custom_preset")?.setOnPreferenceClickListener {
             true
+        }
+    }
+
+    private fun setupAppearance() {
+        findPreference<ListPreference>("app_theme")?.apply {
+            value = ThemeManager.getCurrent(requireContext())
+            summary = entry
+            setOnPreferenceChangeListener { _, newValue ->
+                ThemeManager.save(requireContext(), newValue as String)
+                ThemeManager.apply(requireContext())
+                requireActivity().recreate()
+                true
+            }
         }
     }
 

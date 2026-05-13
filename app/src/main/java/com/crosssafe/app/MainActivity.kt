@@ -3,21 +3,18 @@ package com.crosssafe.app
 import android.animation.AnimatorSet
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.PowerManager
 import android.os.Vibrator
 import android.os.VibrationEffect
-import android.provider.Settings
-import android.net.Uri
 import android.view.KeyEvent
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -32,9 +29,9 @@ import com.crosssafe.app.ui.PresetTheme
 import com.crosssafe.app.ui.PulseAnimator
 import com.crosssafe.app.util.ChangelogManager
 import com.crosssafe.app.util.PermissionManager
+import com.crosssafe.app.util.ThemeManager
 import com.crosssafe.app.util.UpdateManager
 import com.crosssafe.app.viewmodel.MainViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -49,8 +46,8 @@ class MainActivity : AppCompatActivity() {
     private var shakeToStartEnabled = false
     private var volumeHoldStartTime = 0L
     private val HOLD_DURATION_MS = 2000L
-    private val prefs by lazy { getSharedPreferences("crosssafe_prefs", Context.MODE_PRIVATE) }
-
+    private val prefs by lazy { getSharedPreferences("crosssafe_prefs", MODE_PRIVATE) }
+    private var pulseAnimator: AnimatorSet? = null
     private var goButtonPulse: AnimatorSet? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +63,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Apply insets to the inner ConstraintLayout so gradient fills full screen
         ViewCompat.setOnApplyWindowInsetsListener(binding.rootLayout) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -76,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         permissionManager = PermissionManager(this)
         updateManager = UpdateManager(this)
         changelogManager = ChangelogManager(this)
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
 
         setupToolbar()
         setupPresetChips()
@@ -107,10 +103,13 @@ class MainActivity : AppCompatActivity() {
         unregisterShakeDetector()
         goButtonPulse?.let { PulseAnimator.stop(binding.btnGo, it) }
         goButtonPulse = null
+        pulseAnimator?.cancel()
+        pulseAnimator = null
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        pulseAnimator?.cancel()
         if (::updateManager.isInitialized) {
             updateManager.onDestroy()
         }
@@ -136,12 +135,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupToolbar() {
+        setupThemeToggle()
         binding.btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
         binding.btnInfo.setOnClickListener {
             showInfoDialog()
         }
+    }
+
+    private fun setupThemeToggle() {
+        updateThemeIcon()
+        binding.btnTheme.setOnClickListener {
+            val next = when (ThemeManager.getCurrent(this)) {
+                ThemeManager.THEME_SYSTEM -> ThemeManager.THEME_DARK
+                ThemeManager.THEME_DARK   -> ThemeManager.THEME_LIGHT
+                else                      -> ThemeManager.THEME_SYSTEM
+            }
+            ThemeManager.save(this, next)
+            ThemeManager.apply(this)
+            recreate()
+        }
+    }
+
+    private fun updateThemeIcon() {
+        val iconRes = when (ThemeManager.getCurrent(this)) {
+            ThemeManager.THEME_DARK  -> R.drawable.ic_dark_mode
+            ThemeManager.THEME_LIGHT -> R.drawable.ic_light_mode
+            else                     -> R.drawable.ic_brightness_auto
+        }
+        binding.btnTheme.setImageResource(iconRes)
     }
 
     private fun setupPresetChips() {
@@ -151,12 +174,10 @@ class MainActivity : AppCompatActivity() {
                 if (index < presets.size) {
                     val preset = presets[index]
                     chip.root.visibility = View.VISIBLE
-                    chip.chipEmoji.text = preset.emoji
-                    chip.chipName.text = preset.name
+                    chip.presetName.text = preset.name
+                    setChipDots(chip, preset)
                     chip.root.setOnClickListener {
-                        if (!isReduceMotionEnabled()) {
-                            ChipStyleHelper.animateChipSelection(chip.root)
-                        }
+                        if (!isReduceMotionEnabled()) ChipStyleHelper.animateChipSelection(chip.root)
                         viewModel.selectPreset(preset)
                     }
                     chip.root.setOnLongClickListener {
@@ -169,20 +190,43 @@ class MainActivity : AppCompatActivity() {
             }
             updateChipSelection()
         }
-
         binding.btnMorePresets.setOnClickListener { showPresetsBottomSheet() }
+    }
+
+    private fun setChipDots(chip: com.crosssafe.app.databinding.ItemPresetChipBinding, preset: Preset) {
+        val color1 = preset.colors.getOrElse(0) { Color.WHITE }
+        chip.dot1.backgroundTintList = ColorStateList.valueOf(color1)
+
+        if (preset.colors.size > 1) {
+            chip.dot2.visibility = View.VISIBLE
+            chip.dot2.backgroundTintList = ColorStateList.valueOf(preset.colors[1])
+        } else {
+            chip.dot2.visibility = View.GONE
+        }
     }
 
     private fun updateChipSelection() {
         val chipBindings = listOf(binding.chip1, binding.chip2, binding.chip3, binding.chip4)
         val activeId = viewModel.activePreset.value?.id
         val pinned = viewModel.pinnedPresets.value ?: emptyList()
+
+        // Stop any existing pulse animation
+        pulseAnimator?.cancel()
+        pulseAnimator = null
+
         chipBindings.forEachIndexed { index, chip ->
             if (index < pinned.size) {
                 val isSelected = pinned[index].id == activeId
                 chip.root.isSelected = isSelected
+                chip.pulseIcon.visibility = if (isSelected) View.VISIBLE else View.GONE
+                chip.dropdownIcon.visibility = if (isSelected) View.VISIBLE else View.GONE
+
                 if (isSelected) {
                     ChipStyleHelper.applySelectedStyle(chip.root, pinned[index].chipColor)
+                    // Start pulse animation on selected chip
+                    if (!isReduceMotionEnabled()) {
+                        pulseAnimator = PulseAnimator.start(chip.root)
+                    }
                 } else {
                     ChipStyleHelper.applyUnselectedStyle(chip.root)
                 }
@@ -207,7 +251,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.activePreset.observe(this) { preset ->
-            binding.btnGo.text = "START\n${preset.name.uppercase()}"
+            val buttonText = "${preset.name.uppercase()}\n${preset.name} Flash"
+            binding.btnGo.text = buttonText
             updateChipSelection()
             val (c1, c2) = PresetTheme.getBackgroundColors(preset.id)
             binding.gradientBg.transitionToColors(c1, c2)
@@ -277,10 +322,6 @@ class MainActivity : AppCompatActivity() {
             putExtra("preset_name", config.presetName)
         }
         startActivity(intent)
-        if (!isReduceMotionEnabled()) {
-            @Suppress("DEPRECATION")
-            overridePendingTransition(R.anim.flash_enter, R.anim.flash_exit)
-        }
     }
 
     private fun showAutoStopDialog() {
@@ -365,8 +406,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun isReduceMotionEnabled(): Boolean =
-        prefs.getBoolean(PrefKeys.REDUCE_MOTION, false)
+    private fun isReduceMotionEnabled(): Boolean = prefs.getBoolean(PrefKeys.REDUCE_MOTION, false)
 
     private fun formatAutoStop(ms: Long): String = when (ms) {
         0L -> "Off"

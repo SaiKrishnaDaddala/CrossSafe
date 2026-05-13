@@ -2,6 +2,7 @@ package com.crosssafe.app.ui
 
 import android.animation.ValueAnimator
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -21,8 +22,8 @@ class GradientBackgroundView @JvmOverloads constructor(
 
     private val gradientPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
-    private var color1 = Color.parseColor("#1A0A0A")
-    private var color2 = Color.parseColor("#0A0A1A")
+    private var color1 = Color.parseColor("#4A0A30")
+    private var color2 = Color.parseColor("#0A1A4A")
 
     private var animTick = 0f
     private val breathingAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
@@ -42,10 +43,17 @@ class GradientBackgroundView @JvmOverloads constructor(
         breathingAnimator.start()
     }
 
+    private val isDarkMode: Boolean
+        get() = (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
+                Configuration.UI_MODE_NIGHT_YES
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         val w = width.toFloat()
         val h = height.toFloat()
+        val dark = isDarkMode
+        val alpha1 = if (dark) 200 else 50
+        val alpha2 = if (dark) 160 else 35
 
         val cx1 = w * (0.2f + 0.15f * sin(animTick * 2 * Math.PI).toFloat())
         val cy1 = h * (0.25f + 0.12f * cos(animTick * 2 * Math.PI).toFloat())
@@ -56,7 +64,7 @@ class GradientBackgroundView @JvmOverloads constructor(
         val radius1 = w * 0.65f
         gradientPaint.shader = RadialGradient(
             cx1, cy1, radius1,
-            intArrayOf(Color.argb(60, Color.red(color1), Color.green(color1), Color.blue(color1)), Color.TRANSPARENT),
+            intArrayOf(Color.argb(alpha1, Color.red(color1), Color.green(color1), Color.blue(color1)), Color.TRANSPARENT),
             floatArrayOf(0f, 1f),
             Shader.TileMode.CLAMP
         )
@@ -65,7 +73,7 @@ class GradientBackgroundView @JvmOverloads constructor(
         val radius2 = w * 0.55f
         gradientPaint.shader = RadialGradient(
             cx2, cy2, radius2,
-            intArrayOf(Color.argb(45, Color.red(color2), Color.green(color2), Color.blue(color2)), Color.TRANSPARENT),
+            intArrayOf(Color.argb(alpha2, Color.red(color2), Color.green(color2), Color.blue(color2)), Color.TRANSPARENT),
             floatArrayOf(0f, 1f),
             Shader.TileMode.CLAMP
         )

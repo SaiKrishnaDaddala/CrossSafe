@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Outer glow ring -->
-    <item
-        android:left="4dp" android:top="4dp"
-        android:right="4dp" android:bottom="4dp">
+    <!-- Outermost glow ring -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#1AEF4444" />
+        </shape>
+    </item>
+
+    <!-- Middle ring -->
+    <item android:left="6dp" android:top="6dp" android:right="6dp" android:bottom="6dp">
         <shape android:shape="oval">
             <solid android:color="#33EF4444" />
         </shape>
     </item>
 
-    <!-- Main red circle with radial gradient -->
-    <item
-        android:left="10dp" android:top="10dp"
-        android:right="10dp" android:bottom="10dp">
+    <!-- Main button -->
+    <item android:left="14dp" android:top="14dp" android:right="14dp" android:bottom="14dp">
         <shape android:shape="oval">
             <gradient
                 android:type="radial"
-                android:gradientRadius="80%"
-                android:startColor="#FF2222"
-                android:centerColor="#EF4444"
+                android:gradientRadius="70%"
+                android:startColor="#FF5555"
                 android:endColor="#CC1111" />
         </shape>
     </item>

@@ -7,6 +7,8 @@ import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.Vibrator
 import android.os.VibrationEffect
 import android.view.GestureDetector
@@ -16,9 +18,9 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.view.WindowManager
+import android.view.animation.DecelerateInterpolator
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.crosssafe.app.databinding.ActivityFlashBinding
 import com.crosssafe.app.engine.FlashEngine
 import com.crosssafe.app.engine.TorchManager
@@ -40,9 +42,11 @@ class FlashActivity : AppCompatActivity() {
     private lateinit var sensorManager: SensorManager
     private var shakeDetector: ShakeDetector? = null
     private var gestureDetector: GestureDetector? = null
-    private var brightnessHideHandler = android.os.Handler(android.os.Looper.getMainLooper())
+    private var brightnessHideHandler = Handler(Looper.getMainLooper())
     private var currentBrightness = 1.0f
     private var hasExited = false
+    private var stopOverlayVisible = false
+    private val overlayDismissHandler = Handler(Looper.getMainLooper())
     private val prefs by lazy { getSharedPreferences("crosssafe_prefs", Context.MODE_PRIVATE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +69,9 @@ class FlashActivity : AppCompatActivity() {
         setupGestures()
         observeViewModel()
         showHintOverlay(config.presetName)
+
+        binding.btnStopConfirm.setOnClickListener { stopFlashAndExit() }
+        binding.btnStopCancel.setOnClickListener { hideStopOverlay() }
 
         flashEngine.start()
         viewModel.startCountdown(config.autoStopMs)
@@ -128,7 +135,7 @@ class FlashActivity : AppCompatActivity() {
     private fun setupGestures() {
         gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
             override fun onSingleTapUp(e: MotionEvent): Boolean {
-                stopFlashAndExit()
+                if (stopOverlayVisible) hideStopOverlay() else showStopOverlay()
                 return true
             }
 
@@ -140,7 +147,8 @@ class FlashActivity : AppCompatActivity() {
                 val dy = (e1?.y ?: 0f) - e2.y
 
                 return when {
-                    Math.abs(dy) > Math.abs(dx) && dy > 200 && Math.abs(velocityY) > 300 -> {
+                    // swipe DOWN (finger moves top→bottom, dy < 0, velocityY > 0)
+                    Math.abs(dy) > Math.abs(dx) && dy < -200 && velocityY > 300 -> {
                         stopFlashAndExit()
                         true
                     }
@@ -233,13 +241,37 @@ class FlashActivity : AppCompatActivity() {
         binding.hintBar.alpha = 1f
         binding.presetNameText.text = presetName
 
-        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             binding.hintBar.animate()
                 .alpha(0f)
                 .setDuration(800L)
                 .withEndAction { binding.hintBar.visibility = View.GONE }
                 .start()
         }, 3000L)
+    }
+
+    private fun showStopOverlay() {
+        stopOverlayVisible = true
+        binding.stopOverlay.visibility = View.VISIBLE
+        binding.stopOverlay.animate()
+            .translationY(0f)
+            .setDuration(280L)
+            .setInterpolator(DecelerateInterpolator())
+            .start()
+        overlayDismissHandler.removeCallbacksAndMessages(null)
+        overlayDismissHandler.postDelayed({ if (!hasExited) hideStopOverlay() }, 5000L)
+    }
+
+    private fun hideStopOverlay() {
+        if (!stopOverlayVisible) return
+        stopOverlayVisible = false
+        overlayDismissHandler.removeCallbacksAndMessages(null)
+        val slideDown = binding.stopOverlay.height.toFloat().coerceAtLeast(400f)
+        binding.stopOverlay.animate()
+            .translationY(slideDown)
+            .setDuration(220L)
+            .withEndAction { binding.stopOverlay.visibility = View.GONE }
+            .start()
     }
 
     private fun showBrightnessBar(level: Float) {
@@ -272,6 +304,7 @@ class FlashActivity : AppCompatActivity() {
     fun stopFlashAndExit() {
         if (hasExited) return
         hasExited = true
+        overlayDismissHandler.removeCallbacksAndMessages(null)
         flashEngine.stop()
         torchManager.setEnabled(false)
         viewModel.cancelCountdown()

@@ -7,7 +7,8 @@
       "Bash(java -version)",
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\hi\\\\AndroidStudioProjects\\\\CrossSafe\" -Recurse -Directory)",
       "Bash(Select-Object -ExpandProperty FullName)",
-      "Bash(Sort-Object)"
+      "Bash(Sort-Object)",
+      "PowerShell($paths = @\\(\"C:\\\\Program Files\\\\Android\\\\Android Studio\", \"C:\\\\Program Files\\\\Android Studio\", \"$env:LOCALAPPDATA\\\\Programs\\\\Android Studio\"\\); foreach \\($p in $paths\\) { if \\(Test-Path $p\\) { Write-Output \"Found: $p\"; Get-ChildItem $p -Directory | Select-Object -First 10 -ExpandProperty Name } })"
     ]
   }
 }

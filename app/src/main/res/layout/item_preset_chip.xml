@@ -1,29 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:layout_height="64dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
     android:background="@drawable/bg_preset_chip"
     android:clickable="true"
     android:focusable="true">
 
-    <TextView
-        android:id="@+id/chipEmoji"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="🔵🔴"
-        android:textSize="18sp" />
+    <!-- Pulse icon for selected state -->
+    <ImageView
+        android:id="@+id/pulseIcon"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_pulse"
+        app:tint="@color/colorPrimary"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        android:contentDescription="@string/active_preset" />
 
-    <TextView
-        android:id="@+id/chipName"
+    <!-- Color dots (1 or 2 circles indicating preset colors) -->
+    <LinearLayout
+        android:id="@+id/dotsContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Police"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginEnd="10dp">
+
+        <View
+            android:id="@+id/dot1"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:background="@drawable/bg_color_dot" />
+
+        <View
+            android:id="@+id/dot2"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_color_dot"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- Preset name -->
+    <TextView
+        android:id="@+id/presetName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:textColor="@color/colorText"
-        android:textSize="12sp"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium"
         android:maxLines="1"
         android:ellipsize="end" />
+
+    <!-- Dropdown icon for selected state -->
+    <TextView
+        android:id="@+id/dropdownIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dropdown_icon"
+        android:textSize="11sp"
+        android:textColor="@color/colorPrimary"
+        android:visibility="gone" />
 
 </LinearLayout>

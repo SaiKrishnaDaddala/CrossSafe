@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorBackground">#0F0F0F</color>
-    <color name="colorSurface">#1A1A1A</color>
-    <color name="colorSurfaceVariant">#242424</color>
+    <!-- Light mode defaults -->
+    <color name="colorBackground">#F5F5F7</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorSurfaceVariant">#EFEFEF</color>
+    <color name="colorText">#0A0A0A</color>
+    <color name="colorTextSecondary">#6B7280</color>
     <color name="colorPrimary">#EF4444</color>
     <color name="colorPrimaryDark">#B91C1C</color>
-    <color name="colorText">#FFFFFF</color>
-    <color name="colorTextSecondary">#9CA3AF</color>
+    <color name="colorChipBackground">#EEEEEE</color>
+    <color name="colorChipBorder">#DDDDDD</color>
+    <color name="colorControlRow">#F0F0F0</color>
+    <color name="colorControlBorder">#E0E0E0</color>
+    <color name="iconColor">#555555</color>
+    <color name="iconColorAccent">#EF4444</color>
+    <!-- Accent colors (same in both modes) -->
     <color name="colorAccentBlue">#60A5FA</color>
     <color name="colorAccentAmber">#F59E0B</color>
     <color name="colorAccentGreen">#22C55E</color>
     <color name="colorWarning">#F59E0B</color>
     <color name="colorDanger">#EF4444</color>
     <color name="colorSuccess">#22C55E</color>
-    <color name="chipBorderSelected">#60A5FA</color>
+    <color name="chipBorderSelected">#EF4444</color>
     <color name="ic_launcher_background">#EF4444</color>
 </resources>

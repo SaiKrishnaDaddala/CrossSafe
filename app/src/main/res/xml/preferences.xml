@@ -111,6 +111,18 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="Appearance">
+
+        <ListPreference
+            app:key="app_theme"
+            app:title="App theme"
+            app:entries="@array/theme_labels"
+            app:entryValues="@array/theme_values"
+            app:summary="%s"
+            app:defaultValue="system" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="Accessibility">
 
         <ListPreference
