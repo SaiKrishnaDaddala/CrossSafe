@@ -3,6 +3,46 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
+import java.util.Properties
+import java.io.FileInputStream
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
+// Auto-versioning configuration - Read from version.properties
+val versionPropsFile = file("../version.properties")
+val versionProps = Properties()
+
+if (versionPropsFile.exists()) {
+    versionProps.load(FileInputStream(versionPropsFile))
+}
+
+val majorVersion = versionProps.getProperty("MAJOR_VERSION", "1").toInt()
+val minorVersion = versionProps.getProperty("MINOR_VERSION", "0").toInt()
+val patchVersion = versionProps.getProperty("PATCH_VERSION", "0").toInt()
+
+// Auto-increment version code based on timestamp
+// This ensures each build has a unique, incrementing version code
+fun getAutoVersionCode(): Int {
+    // Use days since epoch to create incrementing version code
+    val daysFromEpoch = System.currentTimeMillis() / (1000 * 60 * 60 * 24)
+    // Add build number from current time (ensures uniqueness even on same day)
+    val buildNumber = (System.currentTimeMillis() / 1000 / 60) % 1000
+    return (daysFromEpoch.toInt() * 1000 + buildNumber).toInt()
+}
+
+// Auto-generate version name with build timestamp
+fun getAutoVersionName(): String {
+    val buildDate = SimpleDateFormat("yyyyMMdd", Locale.US).format(Date())
+    val buildTime = SimpleDateFormat("HHmm", Locale.US).format(Date())
+    return "$majorVersion.$minorVersion.$patchVersion-build.$buildDate.$buildTime"
+}
+
+// Simple version name without build info (for release builds)
+fun getSimpleVersionName(): String {
+    return "$majorVersion.$minorVersion.$patchVersion"
+}
+
 android {
     namespace = "com.crosssafe.app"
     compileSdk = 34
@@ -11,9 +51,17 @@ android {
         applicationId = "com.crosssafe.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0.0"
+
+        // Automatic versioning
+        versionCode = getAutoVersionCode()
+        versionName = getAutoVersionName()
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Add version info to BuildConfig for easy access
+        buildConfigField("String", "VERSION_INFO", "\"v${getAutoVersionName()} (${getAutoVersionCode()})\"")
+        buildConfigField("String", "BUILD_DATE", "\"${SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).format(Date())}\"")
+        buildConfigField("String", "SIMPLE_VERSION", "\"${getSimpleVersionName()}\"")
     }
 
     buildTypes {
@@ -24,7 +72,13 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            // Debug builds get detailed version with timestamp
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-DEBUG"
+        }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -35,6 +89,17 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+    }
+}
+
+android.applicationVariants.all {
+    val variant = this
+    variant.outputs.all {
+        val output = this as com.android.build.gradle.internal.api.BaseVariantOutputImpl
+        // Custom output file name with version code
+        if (variant.buildType.name == "release") {
+            output.outputFileName = "app-release-${variant.versionCode}.apk"
+        }
     }
 }
 
@@ -58,3 +123,4 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+

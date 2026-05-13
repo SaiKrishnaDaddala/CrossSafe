@@ -264,6 +264,5 @@ textSizeTiny      = 11sp   // Hints, captions
 <activity android:name=".SettingsActivity"
     android:theme="@style/Theme.CrossSafe.Dark" />
 
-<service android:name=".FlashService"
-    android:foregroundServiceType="camera" />
+<service android:name=".FlashService" />
 ```

@@ -4,13 +4,20 @@ Everything needed to support all Android skins, all screen sizes, all permission
 
 ---
 
+## IMPORTANT: Camera Permission Not Required
+
+**CrossSafe does NOT need the CAMERA permission** to control the flashlight/torch on devices running Android 8.0+ (API 26+).
+
+The `CameraManager.setTorchMode()` API can control the torch without requesting camera permission. Camera permission is only required if you're actually opening the camera to capture photos/video.
+
+Since our minSdk is 26, we can safely use the torch without any permission requests.
+
+---
+
 ## 1. All Permissions (AndroidManifest.xml)
 
 ### Required Permissions
 ```xml
-<!-- CAMERA — needed to fire the torch (flashlight) -->
-<uses-permission android:name="android.permission.CAMERA" />
-
 <!-- WAKE_LOCK — keeps screen ON during flash, prevents auto-sleep -->
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -20,8 +27,6 @@ Everything needed to support all Android skins, all screen sizes, all permission
 <!-- FOREGROUND_SERVICE — keep flash running if user presses Home -->
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
-<!-- FOREGROUND_SERVICE_CAMERA — required on Android 14+ for camera in foreground -->
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
 
 <!-- POST_NOTIFICATIONS — show "CrossSafe active" notification on Android 13+ -->
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -71,43 +76,6 @@ Not all permissions can be declared in manifest — some must be asked at runtim
 
 class PermissionManager(private val activity: AppCompatActivity) {
 
-    // Check and request CAMERA permission (for torch)
-    fun requestCameraIfNeeded(onGranted: () -> Unit, onDenied: () -> Unit) {
-        when {
-            ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED -> onGranted()
-
-            activity.shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
-                // Show rationale dialog FIRST, then request
-                showRationaleDialog(
-                    title = "Camera permission needed",
-                    message = "CrossSafe needs camera access to turn on your phone's flashlight. " +
-                              "The torch flashes in sync with the screen to make you more visible to drivers.",
-                    onOk = { requestCamera(onGranted, onDenied) },
-                    onCancel = onDenied
-                )
-            }
-
-            else -> requestCamera(onGranted, onDenied)
-        }
-    }
-
-    private val cameraLauncher = activity.registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { granted ->
-        if (granted) cameraGrantedCallback?.invoke()
-        else cameraDeniedCallback?.invoke()
-    }
-
-    private var cameraGrantedCallback: (() -> Unit)? = null
-    private var cameraDeniedCallback: (() -> Unit)? = null
-
-    private fun requestCamera(onGranted: () -> Unit, onDenied: () -> Unit) {
-        cameraGrantedCallback = onGranted
-        cameraDeniedCallback = onDenied
-        cameraLauncher.launch(Manifest.permission.CAMERA)
-    }
-
     // POST_NOTIFICATIONS — Android 13+ only
     fun requestNotificationIfNeeded(onGranted: () -> Unit) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -126,19 +94,9 @@ class PermissionManager(private val activity: AppCompatActivity) {
         ActivityResultContracts.RequestPermission()
     ) { /* notification permission result — non-blocking */ }
 
-    // Show a Material dialog explaining why a permission is needed
-    private fun showRationaleDialog(
-        title: String,
-        message: String,
-        onOk: () -> Unit,
-        onCancel: () -> Unit
-    ) {
-        MaterialAlertDialogBuilder(activity)
-            .setTitle(title)
-            .setMessage(message)
-            .setPositiveButton("Allow") { _, _ -> onOk() }
-            .setNegativeButton("Not now") { _, _ -> onCancel() }
-            .show()
+    // Check if torch is available on this device at all
+    fun isTorchAvailable(): Boolean {
+        return activity.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
     }
 
     // If permission permanently denied — send user to App Settings
@@ -148,11 +106,6 @@ class PermissionManager(private val activity: AppCompatActivity) {
             activity.startActivity(this)
         }
     }
-
-    // Check if torch is available on this device at all
-    fun isTorchAvailable(): Boolean {
-        return activity.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
-    }
 }
 ```
 
@@ -160,45 +113,19 @@ class PermissionManager(private val activity: AppCompatActivity) {
 
 | Permission | When to ask | Blocking? |
 |---|---|---|
-| CAMERA | User taps GO for first time with torch ON | No — offer "continue without torch" |
 | POST_NOTIFICATIONS | On app first launch (after onboarding) | No — silent if denied |
 | SCHEDULE_EXACT_ALARM | Only on Android 12+ when auto-stop is set | No — fall back to inexact alarm |
 
 ### Permission Flow in MainActivity
 ```kotlin
 override fun onCreate(...) {
-    // 1. Ask notification permission early (non-blocking)
+    // Ask notification permission early (non-blocking)
     permissionManager.requestNotificationIfNeeded {}
 }
 
 fun onGoButtonTapped() {
-    val torchEnabled = viewModel.torchEnabled.value == true
-    if (torchEnabled && !permissionManager.isTorchAvailable()) {
-        // Device has no torch — disable torch silently
-        viewModel.setTorch(false)
-        startFlash()
-        return
-    }
-    if (torchEnabled) {
-        permissionManager.requestCameraIfNeeded(
-            onGranted = { startFlash() },
-            onDenied  = {
-                // Ask if they want to continue without torch
-                showContinueWithoutTorchDialog()
-            }
-        )
-    } else {
-        startFlash()
-    }
-}
-
-fun showContinueWithoutTorchDialog() {
-    MaterialAlertDialogBuilder(this)
-        .setTitle("Torch not available")
-        .setMessage("CrossSafe will flash the screen only, without the camera torch. Do you want to continue?")
-        .setPositiveButton("Continue") { _, _ -> startFlash() }
-        .setNegativeButton("Cancel", null)
-        .show()
+    // No permission checks needed — torch works without camera permission on API 26+
+    startFlashActivity()
 }
 ```
 

@@ -285,29 +285,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onGoButtonTapped() {
-        val torchOn = viewModel.torchEnabled.value == true
-        if (torchOn) {
-            if (!permissionManager.isTorchAvailable()) {
-                viewModel.setTorch(false)
-                startFlashActivity()
-            } else {
-                permissionManager.requestCameraIfNeeded(
-                    onGranted = { startFlashActivity() },
-                    onDenied = { showContinueWithoutTorchDialog() }
-                )
-            }
-        } else {
-            startFlashActivity()
-        }
-    }
-
-    private fun showContinueWithoutTorchDialog() {
-        MaterialAlertDialogBuilder(this)
-            .setTitle("Torch not available")
-            .setMessage("CrossSafe will flash the screen only, without the camera torch. Do you want to continue?")
-            .setPositiveButton("Continue") { _, _ -> startFlashActivity() }
-            .setNegativeButton("Cancel", null)
-            .show()
+        startFlashActivity()
     }
 
     private fun startFlashActivity() {
