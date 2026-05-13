@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="auto_stop_labels">
+        <item>Off (no limit)</item>
+        <item>30 seconds</item>
+        <item>60 seconds</item>
+        <item>90 seconds</item>
+        <item>2 minutes</item>
+        <item>3 minutes</item>
+    </string-array>
+    <string-array name="auto_stop_values">
+        <item>0</item>
+        <item>30000</item>
+        <item>60000</item>
+        <item>90000</item>
+        <item>120000</item>
+        <item>180000</item>
+    </string-array>
+
+    <string-array name="speed_labels">
+        <item>Pulse (very slow)</item>
+        <item>Slow</item>
+        <item>Medium</item>
+        <item>Fast</item>
+        <item>Rapid (strobe)</item>
+    </string-array>
+    <string-array name="speed_values">
+        <item>PULSE</item>
+        <item>SLOW</item>
+        <item>MEDIUM</item>
+        <item>FAST</item>
+        <item>RAPID</item>
+    </string-array>
+
+    <string-array name="audio_labels">
+        <item>None (silent)</item>
+        <item>Beep</item>
+        <item>Horn</item>
+        <item>Siren</item>
+    </string-array>
+    <string-array name="audio_values">
+        <item>NONE</item>
+        <item>BEEP</item>
+        <item>HORN</item>
+        <item>SIREN</item>
+    </string-array>
+
+    <string-array name="text_size_labels">
+        <item>Normal</item>
+        <item>Large</item>
+        <item>Extra large</item>
+    </string-array>
+    <string-array name="text_size_values">
+        <item>NORMAL</item>
+        <item>LARGE</item>
+        <item>XLARGE</item>
+    </string-array>
+
+    <string-array name="language_labels">
+        <item>English</item>
+        <item>हिंदी (Hindi)</item>
+        <item>தமிழ் (Tamil)</item>
+        <item>తెలుగు (Telugu)</item>
+        <item>ಕನ್ನಡ (Kannada)</item>
+        <item>मराठी (Marathi)</item>
+        <item>বাংলা (Bengali)</item>
+        <item>ગુજરાતી (Gujarati)</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>en</item>
+        <item>hi</item>
+        <item>ta</item>
+        <item>te</item>
+        <item>kn</item>
+        <item>mr</item>
+        <item>bn</item>
+        <item>gu</item>
+    </string-array>
+</resources>

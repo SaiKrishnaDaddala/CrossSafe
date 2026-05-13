@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorSurface">
+
+    <!-- Drag handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#44FFFFFF" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:text="All Presets"
+            android:textColor="@color/colorText"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/searchBox"
+            android:layout_width="160dp"
+            android:layout_height="38dp"
+            android:hint="Search..."
+            android:textColorHint="@color/colorTextSecondary"
+            android:textColor="@color/colorText"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            android:background="@color/colorSurfaceVariant"
+            android:paddingHorizontal="12dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/categoryTabs"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:tabMode="scrollable"
+        app:tabGravity="fill"
+        app:tabTextColor="@color/colorTextSecondary"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabIndicatorColor="@color/colorPrimary"
+        android:background="@color/colorSurface" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/presetsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:padding="8dp"
+        android:clipToPadding="false" />
+
+</LinearLayout>

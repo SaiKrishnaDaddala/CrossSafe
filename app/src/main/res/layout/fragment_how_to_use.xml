@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <TextView
+            android:text="How CrossSafe works"
+            android:textColor="@color/colorText"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp" />
+
+        <LinearLayout android:id="@+id/step1"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="20dp">
+            <TextView android:text="①" android:textColor="@color/colorPrimary"
+                android:textSize="22sp" android:layout_width="40dp" android:layout_height="wrap_content" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:text="Select a preset" android:textColor="@color/colorText"
+                    android:textSize="16sp" android:textStyle="bold" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView android:text="Tap any colored chip" android:textColor="@color/colorTextSecondary"
+                    android:textSize="14sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/step2"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="20dp">
+            <TextView android:text="②" android:textColor="@color/colorPrimary"
+                android:textSize="22sp" android:layout_width="40dp" android:layout_height="wrap_content" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:text="Tap GO" android:textColor="@color/colorText"
+                    android:textSize="16sp" android:textStyle="bold" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView android:text="The big red button" android:textColor="@color/colorTextSecondary"
+                    android:textSize="14sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/step3"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="20dp">
+            <TextView android:text="③" android:textColor="@color/colorPrimary"
+                android:textSize="22sp" android:layout_width="40dp" android:layout_height="wrap_content" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:text="Place phone facing traffic" android:textColor="@color/colorText"
+                    android:textSize="16sp" android:textStyle="bold" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView android:text="Screen faces drivers" android:textColor="@color/colorTextSecondary"
+                    android:textSize="14sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/step4"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:text="④" android:textColor="@color/colorPrimary"
+                android:textSize="22sp" android:layout_width="40dp" android:layout_height="wrap_content" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:text="Cross safely" android:textColor="@color/colorText"
+                    android:textSize="16sp" android:textStyle="bold" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView android:text="Phone flashes until timer stops" android:textColor="@color/colorTextSecondary"
+                    android:textSize="14sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

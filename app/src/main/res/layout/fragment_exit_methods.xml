@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <TextView
+            android:text="How to stop flashing"
+            android:textColor="@color/colorText"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Tap anywhere - most prominent -->
+        <LinearLayout android:id="@+id/exitRow1"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="20dp"
+            android:background="@color/colorSurface" android:padding="12dp">
+            <TextView android:text="👆" android:textSize="28sp"
+                android:layout_width="48dp" android:layout_height="wrap_content" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:text="Tap anywhere" android:textColor="@color/colorText"
+                    android:textSize="18sp" android:textStyle="bold"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:text="Touch any part of the screen to stop"
+                    android:textColor="@color/colorTextSecondary" android:textSize="14sp"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/exitRow2"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="14dp">
+            <TextView android:text="📳" android:textSize="20sp"
+                android:layout_width="48dp" android:layout_height="wrap_content" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:text="Shake twice" android:textColor="@color/colorText"
+                    android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:text="Double shake your phone" android:textColor="@color/colorTextSecondary"
+                    android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/exitRow3"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="14dp">
+            <TextView android:text="🔊" android:textSize="20sp"
+                android:layout_width="48dp" android:layout_height="wrap_content" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:text="Press volume button" android:textColor="@color/colorText"
+                    android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:text="Works even from your pocket" android:textColor="@color/colorTextSecondary"
+                    android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/exitRow4"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="14dp">
+            <TextView android:text="↑" android:textSize="20sp" android:textColor="@color/colorText"
+                android:layout_width="48dp" android:layout_height="wrap_content" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:text="Swipe up" android:textColor="@color/colorText"
+                    android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:text="Quick upward fling gesture" android:textColor="@color/colorTextSecondary"
+                    android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/exitRow5"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="14dp">
+            <TextView android:text="⏱" android:textSize="20sp"
+                android:layout_width="48dp" android:layout_height="wrap_content" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:text="Auto-stops after timer" android:textColor="@color/colorText"
+                    android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:text="Configured in settings (default 90s)" android:textColor="@color/colorTextSecondary"
+                    android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/exitRow6"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:text="←" android:textSize="20sp" android:textColor="@color/colorText"
+                android:layout_width="48dp" android:layout_height="wrap_content" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:text="Back button" android:textColor="@color/colorText"
+                    android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:text="Returns to home screen" android:textColor="@color/colorTextSecondary"
+                    android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

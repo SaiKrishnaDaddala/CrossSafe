@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe quick flash widget</string>
+    <string name="changelog_current_version">• 25+ built-in presets\n• 6 exit methods including shake to stop\n• Home screen widgets (1×1, 2×1, 2×2)\n• Quick Settings tile\n• Offline — no data collected</string>
 </resources>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <!-- App label row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp">
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/ic_widget_go"
+            android:tint="#EF4444"
+            android:contentDescription="CrossSafe" />
+
+        <TextView
+            android:layout_marginStart="4dp"
+            android:text="CrossSafe"
+            android:textColor="#AAFFFFFF"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!-- Big GO button -->
+    <LinearLayout
+        android:id="@+id/btnGoFull"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/widget_go_button_bg"
+        android:layout_marginBottom="6dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_widget_go"
+            android:tint="#FFFFFF"
+            android:contentDescription="Go" />
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:text="START FLASH"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/activePresetName"
+                android:textColor="#CCFFFFFF"
+                android:textSize="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 4 preset chips row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp">
+
+        <LinearLayout android:id="@+id/chip1"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+            android:background="@drawable/widget_preset_chip_bg" android:layout_marginEnd="3dp">
+            <ImageView android:id="@+id/chip1Icon" android:layout_width="16dp" android:layout_height="16dp"
+                android:src="@drawable/ic_widget_go" android:tint="#0066FF" android:contentDescription="Preset" />
+            <TextView android:id="@+id/chip1Label" android:textColor="#FFFFFF" android:textSize="8sp"
+                android:maxLines="1" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/chip2"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+            android:background="@drawable/widget_preset_chip_bg" android:layout_marginEnd="3dp">
+            <ImageView android:id="@+id/chip2Icon" android:layout_width="16dp" android:layout_height="16dp"
+                android:src="@drawable/ic_widget_go" android:tint="#FF0000" android:contentDescription="Preset" />
+            <TextView android:id="@+id/chip2Label" android:textColor="#FFFFFF" android:textSize="8sp"
+                android:maxLines="1" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/chip3"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+            android:background="@drawable/widget_preset_chip_bg" android:layout_marginEnd="3dp">
+            <ImageView android:id="@+id/chip3Icon" android:layout_width="16dp" android:layout_height="16dp"
+                android:src="@drawable/ic_widget_go" android:tint="#AAAAAA" android:contentDescription="Preset" />
+            <TextView android:id="@+id/chip3Label" android:textColor="#FFFFFF" android:textSize="8sp"
+                android:maxLines="1" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/chip4"
+            android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+            android:background="@drawable/widget_preset_chip_bg">
+            <ImageView android:id="@+id/chip4Icon" android:layout_width="16dp" android:layout_height="16dp"
+                android:src="@drawable/ic_widget_go" android:tint="#FF8C00" android:contentDescription="Preset" />
+            <TextView android:id="@+id/chip4Label" android:textColor="#FFFFFF" android:textSize="8sp"
+                android:maxLines="1" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Torch toggle row -->
+    <LinearLayout
+        android:id="@+id/torchRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/widget_preset_chip_bg"
+        android:padding="6dp">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_widget_go"
+            android:tint="#FFD700"
+            android:contentDescription="Torch" />
+
+        <TextView
+            android:layout_marginStart="6dp"
+            android:text="Torch"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/torchStatus"
+            android:text="ON"
+            android:textColor="#22C55E"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

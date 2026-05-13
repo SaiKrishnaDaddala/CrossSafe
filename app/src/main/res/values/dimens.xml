@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="go_button_size">140dp</dimen>
+    <dimen name="preset_chip_height">56dp</dimen>
+    <dimen name="preset_chip_radius">12dp</dimen>
+    <dimen name="card_radius">12dp</dimen>
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="text_huge">48sp</dimen>
+    <dimen name="text_go_button">18sp</dimen>
+    <dimen name="text_body">16sp</dimen>
+    <dimen name="text_small">13sp</dimen>
+    <dimen name="text_tiny">11sp</dimen>
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="32dp"
+    android:background="@color/colorBackground">
+
+    <TextView
+        android:text="Quick tip! 💡"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:text="Add CrossSafe to your home screen for instant one-tap access."
+        android:textColor="@color/colorText"
+        android:textSize="16sp"
+        android:lineSpacingMultiplier="1.4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Widget preview illustration -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#1A1A1A"
+        app:cardCornerRadius="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#EF4444">
+
+            <TextView android:text="⚡" android:textSize="28sp"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:text="GO" android:textColor="#FFFFFF"
+                android:textSize="14sp" android:textStyle="bold"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:text="Long-press your home screen → Widgets → CrossSafe"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="14sp"
+        android:lineSpacingMultiplier="1.4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddWidget"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="+ Add widget now"
+        android:textAllCaps="false"
+        app:cornerRadius="24dp"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="1dp"
+        android:layout_marginBottom="16dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGetStarted"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Get Started"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:cornerRadius="28dp" />
+
+</LinearLayout>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Presets">
+
+        <Preference
+            app:key="manage_pinned"
+            app:title="Manage pinned presets"
+            app:summary="Drag to reorder your 4 home screen presets" />
+
+        <ListPreference
+            app:key="default_preset_id"
+            app:title="Default preset on open"
+            app:summary="%s"
+            app:defaultValue="police" />
+
+        <Preference
+            app:key="create_custom_preset"
+            app:title="Create custom preset"
+            app:summary="Build your own color combination" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Quick triggers">
+
+        <SwitchPreferenceCompat
+            app:key="shake_to_start"
+            app:title="Shake to start"
+            app:summary="Shake phone twice to start flashing"
+            app:defaultValue="false" />
+
+        <SeekBarPreference
+            app:key="shake_sensitivity"
+            app:title="Shake sensitivity"
+            app:min="1"
+            android:max="10"
+            app:defaultValue="6"
+            app:dependency="shake_to_start" />
+
+        <SwitchPreferenceCompat
+            app:key="volume_trigger"
+            app:title="Volume button trigger"
+            app:summary="Hold Volume Down 2 seconds to start"
+            app:defaultValue="false" />
+
+        <Preference
+            app:key="quick_tile_info"
+            app:title="Quick Settings tile"
+            app:summary="Add CrossSafe to your notification shade pulldown" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Flash behaviour">
+
+        <SeekBarPreference
+            app:key="default_brightness"
+            app:title="Default brightness"
+            app:summary="Screen brightness during flash"
+            app:min="50"
+            android:max="100"
+            app:defaultValue="100" />
+
+        <ListPreference
+            app:key="auto_stop_ms"
+            app:title="Auto-stop timer"
+            app:entries="@array/auto_stop_labels"
+            app:entryValues="@array/auto_stop_values"
+            app:summary="%s"
+            app:defaultValue="90000" />
+
+        <ListPreference
+            app:key="flash_speed"
+            app:title="Default flash speed"
+            app:entries="@array/speed_labels"
+            app:entryValues="@array/speed_values"
+            app:summary="%s"
+            app:defaultValue="MEDIUM" />
+
+        <SwitchPreferenceCompat
+            app:key="torch_default_on"
+            app:title="Torch on by default"
+            app:summary="Fire camera flash in sync with screen"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="restore_brightness"
+            app:title="Restore brightness on exit"
+            app:summary="Return to original brightness after flash stops"
+            app:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Sound">
+
+        <ListPreference
+            app:key="audio_alert"
+            app:title="Audio alert"
+            app:entries="@array/audio_labels"
+            app:entryValues="@array/audio_values"
+            app:summary="%s"
+            app:defaultValue="NONE" />
+
+        <SeekBarPreference
+            app:key="audio_volume"
+            app:title="Audio volume"
+            app:min="0"
+            android:max="100"
+            app:defaultValue="70"
+            app:dependency="audio_alert" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Accessibility">
+
+        <ListPreference
+            app:key="text_size"
+            app:title="Text size"
+            app:entries="@array/text_size_labels"
+            app:entryValues="@array/text_size_values"
+            app:summary="%s"
+            app:defaultValue="NORMAL" />
+
+        <SwitchPreferenceCompat
+            app:key="high_contrast"
+            app:title="High contrast mode"
+            app:summary="Stronger color contrast throughout the app"
+            app:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            app:key="reduce_motion"
+            app:title="Reduce motion"
+            app:summary="Disable animations in the app"
+            app:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Language">
+
+        <ListPreference
+            app:key="app_language"
+            app:title="App language"
+            app:entries="@array/language_labels"
+            app:entryValues="@array/language_values"
+            app:summary="%s"
+            app:defaultValue="en" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Help and about">
+
+        <Preference
+            app:key="replay_onboarding"
+            app:title="How to use"
+            app:summary="See the app tutorial again" />
+
+        <Preference
+            app:key="epilepsy_warning"
+            app:title="Epilepsy warning"
+            app:summary="View the safety warning" />
+
+        <Preference
+            app:key="privacy_policy"
+            app:title="Privacy policy"
+            app:summary="No data collected. 100% offline." />
+
+        <Preference
+            app:key="app_version"
+            app:title="Version"
+            app:summary="1.0.0" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/flashRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Vignette overlay — darkens edges above the colored flash background -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/vignette_overlay"
+        android:alpha="0.35"
+        android:importantForAccessibility="no" />
+
+    <!-- Hint bar at top -->
+    <LinearLayout
+        android:id="@+id/hintBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#55000000"
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:layout_gravity="top"
+        android:visibility="visible">
+
+        <TextView
+            android:text="Tap anywhere to stop"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/presetNameText"
+            android:textColor="#CCFFFFFF"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!-- Countdown timer -->
+    <TextView
+        android:id="@+id/countdownText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="120dp"
+        android:text="01:30"
+        android:textColor="#80FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:fontFamily="monospace" />
+
+    <!-- Preset name toast (shows when cycling) -->
+    <TextView
+        android:id="@+id/presetNameToast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#88000000"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <!-- Brightness bar (right edge) -->
+    <LinearLayout
+        android:id="@+id/brightnessBar"
+        android:layout_width="60dp"
+        android:layout_height="200dp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="12dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#88000000"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/brightnessPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp" />
+
+        <SeekBar
+            android:id="@+id/brightnessProgress"
+            android:layout_width="8dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="100"
+            android:progressTint="#FFFFFF"
+            android:thumbTint="#FFFFFF"
+            android:rotation="270" />
+    </LinearLayout>
+
+</FrameLayout>

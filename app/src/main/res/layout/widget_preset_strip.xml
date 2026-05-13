@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/btnGoMain"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.6"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/widget_go_button_bg"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_widget_go"
+            android:tint="#FFFFFF"
+            android:contentDescription="Flash" />
+
+        <TextView
+            android:layout_marginTop="2dp"
+            android:text="GO"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/mainPresetName"
+            android:textColor="#BBFFFFFF"
+            android:textSize="9sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <View android:layout_width="6dp" android:layout_height="0dp" />
+
+    <LinearLayout
+        android:id="@+id/btnPreset1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/widget_preset_chip_bg">
+
+        <ImageView
+            android:id="@+id/preset1Icon"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_widget_go"
+            android:tint="#0066FF"
+            android:contentDescription="Preset 1" />
+
+        <TextView
+            android:id="@+id/preset1Name"
+            android:textColor="#FFFFFF"
+            android:textSize="9sp"
+            android:layout_marginTop="3dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <View android:layout_width="4dp" android:layout_height="0dp" />
+
+    <LinearLayout
+        android:id="@+id/btnPreset2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/widget_preset_chip_bg">
+
+        <ImageView
+            android:id="@+id/preset2Icon"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_widget_go"
+            android:tint="#FF8C00"
+            android:contentDescription="Preset 2" />
+
+        <TextView
+            android:id="@+id/preset2Name"
+            android:textColor="#FFFFFF"
+            android:textSize="9sp"
+            android:layout_marginTop="3dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
