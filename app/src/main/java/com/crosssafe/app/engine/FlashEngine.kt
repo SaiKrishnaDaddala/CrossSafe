@@ -17,24 +17,20 @@ class FlashEngine(
     private val context: Context,
     private val window: Window,
     private val rootView: View,
-    private var config: FlashConfig
+    private var config: FlashConfig,
+    private val torchManager: TorchManager
 ) {
     private val handler = Handler(Looper.getMainLooper())
     var isRunning = false
         private set
     private var currentColorIndex = 0
     private var patternStep = 0
-    private var torchManager: TorchManager? = null
     private var wakeLock: PowerManager.WakeLock? = null
     private var originalBrightness: Float = -1f
     private var flashRenderer: FlashRenderer? = null
     private var onPresetChanged: ((String) -> Unit)? = null
     private var allPresets: List<com.crosssafe.app.model.Preset> = emptyList()
     private var currentPresetIndex = 0
-
-    init {
-        torchManager = TorchManager(context)
-    }
 
     fun setFlashRenderer(renderer: FlashRenderer) {
         flashRenderer = renderer
@@ -53,7 +49,7 @@ class FlashEngine(
         saveBrightness()
         setBrightness(config.brightness)
         if (config.torchEnabled && config.torchSyncMode == TorchSync.ALWAYS_ON) {
-            torchManager?.setEnabled(true)
+            torchManager.setEnabled(true)
         }
         scheduleNextFlash()
     }
@@ -62,7 +58,7 @@ class FlashEngine(
         isRunning = false
         handler.removeCallbacksAndMessages(null)
         flashRenderer?.reset() ?: rootView.setBackgroundColor(Color.BLACK)
-        torchManager?.setEnabled(false)
+        torchManager.setEnabled(false)
         restoreBrightness()
         releaseWakeLock()
     }
@@ -210,9 +206,9 @@ class FlashEngine(
 
     private fun syncTorch(color: Int) {
         when (config.torchSyncMode) {
-            TorchSync.SYNC_WITH_FLASH -> torchManager?.setEnabled(color != Color.BLACK && config.torchEnabled)
-            TorchSync.ALWAYS_ON -> torchManager?.setEnabled(config.torchEnabled)
-            TorchSync.ALWAYS_OFF -> torchManager?.setEnabled(false)
+            TorchSync.SYNC_WITH_FLASH -> torchManager.setEnabled(color != Color.BLACK && config.torchEnabled)
+            TorchSync.ALWAYS_ON -> torchManager.setEnabled(config.torchEnabled)
+            TorchSync.ALWAYS_OFF -> torchManager.setEnabled(false)
         }
     }
 

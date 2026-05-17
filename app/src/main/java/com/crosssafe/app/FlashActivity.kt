@@ -61,7 +61,7 @@ class FlashActivity : AppCompatActivity() {
         viewModel.currentPresetName.value = config.presetName
 
         torchManager = TorchManager(this)
-        flashEngine = FlashEngine(this, window, binding.flashRoot, config)
+        flashEngine = FlashEngine(this, window, binding.flashRoot, config, torchManager)
         if (!prefs.getBoolean(PrefKeys.REDUCE_MOTION, false)) {
             flashEngine.setFlashRenderer(FlashRenderer(binding.flashRoot))
         }
@@ -94,6 +94,16 @@ class FlashActivity : AppCompatActivity() {
         if (!isFinishing && !hasExited) {
             startFlashService()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // CRITICAL: Always ensure torch is turned off when activity is destroyed
+        // This prevents the torch from getting stuck on
+        flashEngine.stop()
+        torchManager.setEnabled(false)
+        torchManager.cleanup()
+        stopFlashService()
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

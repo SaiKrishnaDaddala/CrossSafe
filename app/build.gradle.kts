@@ -45,12 +45,12 @@ fun getSimpleVersionName(): String {
 
 android {
     namespace = "com.crosssafe.app"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.crosssafe.app"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
 
         // Automatic versioning
         versionCode = getAutoVersionCode()

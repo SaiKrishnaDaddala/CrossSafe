@@ -27,6 +27,8 @@ Since our minSdk is 26, we can safely use the torch without any permission reque
 <!-- FOREGROUND_SERVICE — keep flash running if user presses Home -->
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
+<!-- FOREGROUND_SERVICE_SPECIAL_USE — required on Android 14+ for special use foreground services -->
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 
 <!-- POST_NOTIFICATIONS — show "CrossSafe active" notification on Android 13+ -->
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
