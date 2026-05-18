@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">Widget szybkiego błysku CrossSafe</string>
+    <string name="changelog_current_version">• Ponad 70 ustawień wstępnych, w tym 45+ flag krajów 🌍\n• Ponad 20 języków — naprawdę globalna aplikacja\n• Nowa kategoria "Flagi krajów" z narodami z całego świata\n• 6 metod wyjścia, w tym potrząsanie, aby zatrzymać\n• Widżety ekranu głównego (1×1, 2×1, 2×2)\n• Kafelek Szybkie ustawienia\n• Offline — brak zbieranych danych</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">Wskaźnik aktywnego ustawienia wstępnego</string>
+</resources>
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">Widget flash rapide CrossSafe</string>
+    <string name="changelog_current_version">• Plus de 70 préréglages dont 45+ drapeaux de pays 🌍\n• Plus de 20 langues — application vraiment mondiale\n• Nouvelle catégorie "Drapeaux des pays" avec des nations du monde entier\n• 6 méthodes de sortie dont secouer pour arrêter\n• Widgets d\'écran d\'accueil (1×1, 2×1, 2×2)\n• Tuile des paramètres rapides\n• Hors ligne — aucune donnée collectée</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">Indicateur de préréglage actif</string>
+</resources>
+

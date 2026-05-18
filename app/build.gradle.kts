@@ -1,13 +1,14 @@
+import java.util.Properties
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
-
-import java.util.Properties
-import java.io.FileInputStream
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 // Auto-versioning configuration - Read from version.properties
 val versionPropsFile = file("../version.properties")
@@ -20,6 +21,7 @@ if (versionPropsFile.exists()) {
 val majorVersion = versionProps.getProperty("MAJOR_VERSION", "1").toInt()
 val minorVersion = versionProps.getProperty("MINOR_VERSION", "0").toInt()
 val patchVersion = versionProps.getProperty("PATCH_VERSION", "0").toInt()
+val lastVersionCode = versionProps.getProperty("LAST_VERSION_CODE", "0").toInt()
 
 // Auto-increment version code based on timestamp
 // This ensures each build has a unique, incrementing version code
@@ -28,7 +30,23 @@ fun getAutoVersionCode(): Int {
     val daysFromEpoch = System.currentTimeMillis() / (1000 * 60 * 60 * 24)
     // Add build number from current time (ensures uniqueness even on same day)
     val buildNumber = (System.currentTimeMillis() / 1000 / 60) % 1000
-    return (daysFromEpoch.toInt() * 1000 + buildNumber).toInt()
+    val calculatedVersion = (daysFromEpoch.toInt() * 1000 + buildNumber).toInt()
+
+    // Ensure version code is always higher than the last used one
+    val newVersionCode = maxOf(calculatedVersion, lastVersionCode + 1)
+
+    // Update version.properties with new version code
+    versionProps.setProperty("LAST_VERSION_CODE", newVersionCode.toString())
+    try {
+        FileOutputStream(versionPropsFile).use { outputStream ->
+            versionProps.store(outputStream, "CrossSafe Auto-Versioning Configuration - Updated by build system")
+        }
+    } catch (e: Exception) {
+        // If we can't write, that's okay - the version code will still work
+        println("Warning: Could not update LAST_VERSION_CODE in version.properties: ${e.message}")
+    }
+
+    return newVersionCode
 }
 
 // Auto-generate version name with build timestamp

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe snelle flits-widget</string>
+    <string name="changelog_current_version">• Meer dan 70 voorinstellingen inclusief 45+ landenvlaggen 🌍\n• Meer dan 20 talen — echt wereldwijde app\n• Nieuwe categorie "Landenvlaggen" met naties over de hele wereld\n• 6 afsluit methoden waaronder schudden om te stoppen\n• Startscherm widgets (1×1, 2×1, 2×2)\n• Snelle instellingen tegel\n• Offline — geen gegevens verzameld</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">Actieve voorinstelling indicator</string>
+</resources>
+

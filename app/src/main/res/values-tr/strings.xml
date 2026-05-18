@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe hızlı flaş widget\'ı</string>
+    <string name="changelog_current_version">• 70+ yerleşik ön ayar, 45+ ülke bayrağı dahil 🌍\n• 20+ dil — gerçekten küresel uygulama\n• Dünya çapında ülkelerle yeni "Ülke bayrakları" kategorisi\n• Durdurmak için sallama dahil 6 çıkış yöntemi\n• Ana ekran widget\'ları (1×1, 2×1, 2×2)\n• Hızlı Ayarlar kutucuğu\n• Çevrimdışı — veri toplanmıyor</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">Aktif ön ayar göstergesi</string>
+</resources>
+

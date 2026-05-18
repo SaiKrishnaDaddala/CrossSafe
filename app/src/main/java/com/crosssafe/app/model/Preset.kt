@@ -22,5 +22,6 @@ enum class PresetCategory(val label: String) {
     MULTI("Multi color"),
     PATTERN("Pattern"),
     NIGHT("Night mode"),
+    COUNTRY_FLAGS("Country flags"),
     CUSTOM("My presets")
 }

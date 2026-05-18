@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe விரைவு ஃபிளாஷ் விட்ஜெட்</string>
+    <string name="changelog_current_version">• 70+ உள்ளமைக்கப்பட்ட பிரீசெட்கள், 45+ நாட்டு கொடிகள் உட்பட 🌍\n• 20+ மொழிகள் — உண்மையிலேயே உலகளாவிய பயன்பாடு\n• உலகம் முழuvதும் நாடுகளுடன் புதிய "நாட்டு கொடிகள்" வகை\n• நிறுத்த குலுக்குதல் உட்பட 6 வெளியேறும் முறைகள்\n• முகப்பு திரை விட்ஜெட்கள் (1×1, 2×1, 2×2)\n• விரைவு அமைப்புகள் டைல்\n• ஆஃப்லைன் — தரவு சேகரிக்கப்படவில்லை</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">செயலில் உள்ள பிரீசெட் குறிகாட்டி</string>
+</resources>
+

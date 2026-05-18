@@ -5,14 +5,25 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
-import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.crosssafe.app.FlashActivity
 import com.crosssafe.app.R
 
+/**
+ * Foreground service that keeps the app alive while the screen is flashing for pedestrian safety.
+ *
+ * COMPLIANCE WITH FOREGROUND_SERVICE_SPECIAL_USE:
+ * - Service is highly noticeable: screen actively flashes bright colors at 100% brightness
+ * - User-initiated: only starts when user taps GO button in FlashActivity
+ * - Clear notification: shows "CrossSafe is active" with visible STOP action
+ * - Unique use case: pedestrian safety feature that doesn't fit standard service types
+ * - Manifest declares: android:foregroundServiceType="specialUse" with proper justification
+ *
+ * This service prevents the system from killing the flash functionality while the user
+ * is actively crossing a road with their phone flashing for visibility.
+ */
 class FlashService : Service() {
 
     override fun onBind(intent: Intent?): IBinder? = null
@@ -27,16 +38,15 @@ class FlashService : Service() {
 
     private fun buildNotification(): Notification {
         val channelId = "crosssafe_flash_channel"
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId, "Flash active", NotificationManager.IMPORTANCE_LOW
-            ).apply {
-                description = "Shows while CrossSafe is flashing"
-                setShowBadge(false)
-                lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-            }
-            getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
+        // Create notification channel (required on Android 8.0+)
+        val channel = NotificationChannel(
+            channelId, "Safety Flash Active", NotificationManager.IMPORTANCE_LOW
+        ).apply {
+            description = "Alerts you while CrossSafe is flashing for pedestrian safety"
+            setShowBadge(false)
+            lockscreenVisibility = Notification.VISIBILITY_PUBLIC
         }
+        getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
 
         val stopIntent = Intent(this, FlashService::class.java).apply { action = ACTION_STOP }
         val stopPending = PendingIntent.getService(

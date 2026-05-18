@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">Widget kilat cepat CrossSafe</string>
+    <string name="changelog_current_version">• 70+ preset termasuk 45+ bendera negara 🌍\n• 20+ bahasa — aplikasi yang benar-benar global\n• Kategori baru "Bendera negara" dengan negara-negara di seluruh dunia\n• 6 metode keluar termasuk goyangkan untuk berhenti\n• Widget layar beranda (1×1, 2×1, 2×2)\n• Ubin Pengaturan Cepat\n• Offline — tidak ada data yang dikumpulkan</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">Indikator preset aktif</string>
+</resources>
+

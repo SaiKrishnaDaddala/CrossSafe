@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">CrossSafe</string>
     <string name="widget_description">CrossSafe quick flash widget</string>
-    <string name="changelog_current_version">• 25+ built-in presets\n• 6 exit methods including shake to stop\n• Home screen widgets (1×1, 2×1, 2×2)\n• Quick Settings tile\n• Offline — no data collected</string>
+    <string name="changelog_current_version">• 70+ built-in presets including 45+ country flags 🌍\n• 20+ languages — truly global app\n• New "Country flags" category with nations worldwide\n• 6 exit methods including shake to stop\n• Home screen widgets (1×1, 2×1, 2×2)\n• Quick Settings tile\n• Offline — no data collected</string>
     <string name="dropdown_icon">▼</string>
     <string name="active_preset">Active preset indicator</string>
 </resources>

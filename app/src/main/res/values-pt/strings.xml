@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">Widget de flash rápido CrossSafe</string>
+    <string name="changelog_current_version">• Mais de 70 predefinições incluindo 45+ bandeiras de países 🌍\n• Mais de 20 idiomas — aplicativo verdadeiramente global\n• Nova categoria "Bandeiras de países" com nações em todo o mundo\n• 6 métodos de saída incluindo agitar para parar\n• Widgets de tela inicial (1×1, 2×1, 2×2)\n• Bloco de Configurações rápidas\n• Offline — nenhum dado coletado</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">Indicador de predefinição ativa</string>
+</resources>
+

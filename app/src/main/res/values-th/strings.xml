@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">วิดเจ็ตแฟลชด่วน CrossSafe</string>
+    <string name="changelog_current_version">• โปรไฟล์มากกว่า 70 รายการ รวมธงชาติ 45+ ประเทศ 🌍\n• รองรับมากกว่า 20 ภาษา — แอประดับโลกอย่างแท้จริง\n• หมวดหมู่ใหม่ "ธงชาติ" พร้อมประเทศต่างๆ ทั่วโลก\n• วิธีออกจากแอปถึง 6 วิธี รวมถึงเขย่าเพื่อหยุด\n• วิดเจ็ตหน้าจอหลัก (1×1, 2×1, 2×2)\n• ไทล์การตั้งค่าด่วน\n• ออฟไลน์ — ไม่มีการเก็บข้อมูล</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">ตัวบ่งชี้โปรไฟล์ที่ใช้งานอยู่</string>
+</resources>
+

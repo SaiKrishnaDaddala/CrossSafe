@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe త్వరిత ఫ్లాష్ విడ్జెట్</string>
+    <string name="changelog_current_version">• 70+ అంతర్నిర్మిత ప్రీసెట్‌లు, 45+ దేశ జెండాలతో సహా 🌍\n• 20+ భాషలు — నిజంగా ప్రపంచ యాప్\n• ప్రపంచవ్యాప్తంగా దేశాలతో కొత్త "దేశ జెండాలు" వర్గం\n• ఆపడానికి షేక్ చేయడంతో సహా 6 నిష్క్రమణ పద్ధతులు\n• హోమ్ స్క్రీన్ విడ్జెట్‌లు (1×1, 2×1, 2×2)\n• త్వరిత సెట్టింగ్‌ల టైల్\n• ఆఫ్‌లైన్ — డేటా సేకరించబడలేదు</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">క్రియాశీల ప్రీసెట్ సూచిక</string>
+</resources>
+

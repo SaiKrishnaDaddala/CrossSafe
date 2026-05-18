@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe クイックフラッシュウィジェット</string>
+    <string name="changelog_current_version">• 70以上のプリセット、45以上の国旗を含む 🌍\n• 20以上の言語 — 真のグローバルアプリ\n• 新しい「国旗」カテゴリー、世界中の国々\n• シェイクして停止を含む6つの終了方法\n• ホーム画面ウィジェット（1×1、2×1、2×2）\n• クイック設定タイル\n• オフライン — データ収集なし</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">アクティブプリセットインジケーター</string>
+</resources>
+

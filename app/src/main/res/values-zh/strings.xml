@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe 快速闪光小部件</string>
+    <string name="changelog_current_version">• 70+ 内置预设，包括45+国家国旗 🌍\n• 20+ 种语言 — 真正的全球应用\n• 新增"国家国旗"类别，包含世界各国\n• 6 种退出方式，包括摇动停止\n• 主屏幕小部件（1×1、2×1、2×2）\n• 快速设置磁贴\n• 离线 — 不收集数据</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">活动预设指示器</string>
+</resources>
+

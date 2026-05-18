@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe 빠른 플래시 위젯</string>
+    <string name="changelog_current_version">• 70개 이상의 프리셋, 45개 이상의 국기 포함 🌍\n• 20개 이상의 언어 - 진정한 글로벌 앱\n• 전 세계 국가가 포함된 새로운 "국기" 카테고리\n• 흔들어서 정지를 포함한 6가지 종료 방법\n• 홈 화면 위젯 (1×1, 2×1, 2×2)\n• 빠른 설정 타일\n• 오프라인 — 데이터 수집 없음</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">활성 프리셋 표시기</string>
+</resources>
+

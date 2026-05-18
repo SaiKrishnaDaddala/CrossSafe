@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">أداة الفلاش السريع CrossSafe</string>
+    <string name="changelog_current_version">• أكثر من 70 إعدادًا مسبقًا بما في ذلك 45+ علمًا للدول 🌍\n• أكثر من 20 لغة — تطبيق عالمي حقيقي\n• فئة جديدة "أعلام الدول" مع دول من جميع أنحاء العالم\n• 6 طرق للخروج بما في ذلك الاهتزاز للإيقاف\n• أدوات الشاشة الرئيسية (1×1، 2×1، 2×2)\n• بلاطة الإعدادات السريعة\n• غير متصل — لا يتم جمع البيانات</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">مؤشر الإعداد المسبق النشط</string>
+</resources>
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe Schnellblitz-Widget</string>
+    <string name="changelog_current_version">• Über 70 Voreinstellungen inkl. 45+ Länderflaggen 🌍\n• Über 20 Sprachen — wahrhaft globale App\n• Neue Kategorie "Länderflaggen" mit Nationen weltweit\n• 6 Exit-Methoden einschließlich Schütteln zum Stoppen\n• Startbildschirm-Widgets (1×1, 2×1, 2×2)\n• Schnelleinstellungs-Kachel\n• Offline — keine Daten erfasst</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">Aktive Voreinstellungsanzeige</string>
+</resources>
+

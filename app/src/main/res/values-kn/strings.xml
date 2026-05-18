@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe ತ್ವರಿತ ಫ್ಲಾಶ್ ವಿಜೆಟ್</string>
+    <string name="changelog_current_version">• 70+ ಅಂತರ್ನಿರ್ಮಿತ ಪ್ರೀಸೆಟ್‌ಗಳು, 45+ ದೇಶದ ಧ್ವಜಗಳು ಸೇರಿದಂತೆ 🌍\n• 20+ ಭಾಷೆಗಳು — ನಿಜವಾದ ಜಾಗತಿಕ ಅಪ್ಲಿಕೇಶನ್\n• ವಿಶ್ವಾದ್ಯಂತ ರಾಷ್ಟ್ರಗಳೊಂದಿಗೆ ಹೊಸ "ದೇಶದ ಧ್ವಜಗಳು" ವರ್ಗ\n• ನಿಲ್ಲಿಸಲು ಅಲುಗಾಡಿಸುವುದನ್ನು ಒಳಗೊಂಡಂತೆ 6 ನಿರ್ಗಮನ ವಿಧಾನಗಳು\n• ಹೋಮ್ ಸ್ಕ್ರೀನ್ ವಿಜೆಟ್‌ಗಳು (1×1, 2×1, 2×2)\n• ತ್ವರಿತ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ಟೈಲ್\n• ಆಫ್‌ಲೈನ್ — ಯಾವುದೇ ಡೇಟಾ ಸಂಗ್ರಹಿಸಲಾಗಿಲ್ಲ</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">ಸಕ್ರಿಯ ಪ್ರೀಸೆಟ್ ಸೂಚಕ</string>
+</resources>
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">Tiện ích flash nhanh CrossSafe</string>
+    <string name="changelog_current_version">• Hơn 70 cài đặt sẵn bao gồm 45+ cờ quốc gia 🌍\n• Hơn 20 ngôn ngữ — ứng dụng thực sự toàn cầu\n• Danh mục mới "Cờ quốc gia" với các quốc gia trên toàn thế giới\n• 6 phương thức thoát bao gồm lắc để dừng\n• Tiện ích màn hình chính (1×1, 2×1, 2×2)\n• Ô Cài đặt nhanh\n• Ngoại tuyến — không thu thập dữ liệu</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">Chỉ báo cài đặt sẵn đang hoạt động</string>
+</resources>
+

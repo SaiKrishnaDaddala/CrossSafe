@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">Виджет быстрой вспышки CrossSafe</string>
+    <string name="changelog_current_version">• Более 70 пресетов, включая 45+ флагов стран 🌍\n• Более 20 языков — по-настоящему глобальное приложение\n• Новая категория "Флаги стран" с нациями со всего мира\n• 6 способов выхода, включая встряхивание для остановки\n• Виджеты главного экрана (1×1, 2×1, 2×2)\n• Плитка быстрых настроек\n• Оффлайн — данные не собираются</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">Индикатор активного пресета</string>
+</resources>
+

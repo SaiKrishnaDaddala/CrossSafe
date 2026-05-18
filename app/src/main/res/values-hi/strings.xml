@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossSafe</string>
+    <string name="widget_description">CrossSafe त्वरित फ्लैश विजेट</string>
+    <string name="changelog_current_version">• 70+ बिल्ट-इन प्रीसेट जिनमें 45+ देशों के झंडे शामिल हैं 🌍\n• 20+ भाषाएं — वास्तव में वैश्विक ऐप\n• दुनिया भर के देशों के साथ नई "देश के झंडे" श्रेणी\n• रोकने के लिए हिलाना सहित 6 निकास विधियां\n• होम स्क्रीन विजेट (1×1, 2×1, 2×2)\n• त्वरित सेटिंग्स टाइल\n• ऑफ़लाइन — कोई डेटा एकत्र नहीं किया गया</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="active_preset">सक्रिय प्रीसेट संकेतक</string>
+</resources>
+

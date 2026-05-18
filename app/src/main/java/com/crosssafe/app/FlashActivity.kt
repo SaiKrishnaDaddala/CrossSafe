@@ -389,10 +389,20 @@ class FlashActivity : AppCompatActivity() {
         val intent = Intent(this, FlashService::class.java).apply {
             action = FlashService.ACTION_START
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(intent)
-        } else {
-            startService(intent)
+        try {
+            // Safe to start foreground service here because:
+            // 1. User is actively interacting with FlashActivity (visible UI)
+            // 2. This is user-initiated action (tapped GO button)
+            // 3. Meets Android 14+ foreground service restrictions
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(intent)
+            } else {
+                startService(intent)
+            }
+        } catch (e: Exception) {
+            // Extremely rare edge case on Android 14+ if service can't start
+            // App will continue functioning - flash just won't have foreground protection
+            e.printStackTrace()
         }
     }
 
